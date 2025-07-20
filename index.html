@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>政党クエスト 〜10の試練でえらぶ、あなたのギルド（政党）〜</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+        .font-rpg {
+            font-family: 'DotGothic16', sans-serif;
+        }
+        .dialog-box {
+            border: 4px solid #ecf0f1;
+            background-color: rgba(44, 62, 80, 0.85);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .btn-rpg {
+            font-family: 'DotGothic16', sans-serif;
+            background-color: #3498db;
+            border: 2px solid #2980b9;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px #2980b9;
+            transform: translateY(0);
+        }
+        .btn-rpg:hover {
+            background-color: #2980b9;
+            transform: translateY(2px);
+            box-shadow: 0 2px #2980b9;
+        }
+        .btn-rpg:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 #2980b9;
+        }
+        .btn-rpg:disabled {
+            background-color: #95a5a6;
+            border-color: #7f8c8d;
+            box-shadow: 0 4px #7f8c8d;
+            cursor: not-allowed;
+        }
+        .btn-rpg-secondary {
+            background-color: #8e44ad;
+            border-color: #732d91;
+            box-shadow: 0 4px #732d91;
+        }
+        .btn-rpg-secondary:hover {
+             background-color: #732d91;
+             transform: translateY(2px);
+             box-shadow: 0 2px #732d91;
+        }
+        .option-selected {
+            background-color: #e67e22 !important;
+            border-color: #d35400 !important;
+            box-shadow: 0 4px #d35400 !important;
+        }
+        .progress-bar-container {
+            border: 2px solid #ecf0f1;
+            background-color: #2c3e50;
+        }
+        .progress-bar {
+            background-color: #e67e22;
+            transition: width 0.5s ease-in-out;
+        }
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .result-card {
+            border: 3px solid #f1c40f;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
+        }
+        .result-card h3 {
+            color: #f1c40f;
+        }
+    </style>
+</head>
+<body class="bg-cover bg-center bg-fixed" style="background-image: url('https://placehold.co/1920x1080/2c3e50/34495e.png?text=RPG+Background');">
+
+    <div id="app" class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- 開始画面 -->
+        <div id="start-screen" class="text-center">
+            <div class="dialog-box p-6 md:p-10 rounded-lg">
+                <h1 class="text-3xl md:text-5xl font-rpg mb-4 text-yellow-300">政党クエスト</h1>
+                <h2 class="text-lg md:text-2xl font-rpg mb-6">〜10の試練でえらぶ、あなたのギルド（政党）〜</h2>
+                
+                <div class="mx-auto my-6 w-32 h-32 rounded-full border-4 border-gray-400 bg-gray-200 flex items-center justify-center overflow-hidden p-1">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="image-rendering: pixelated;">
+                        <path d="M36 8h2v34h-2z" fill="#8b5e3c"/>
+                        <path d="M34 10h2v2h-2z" fill="#8b5e3c"/>
+                        <path d="M32 12h2v2h-2z" fill="#8b5e3c"/>
+                        <path d="M18 12h12v2h-12z" fill="#f2d6b5"/>
+                        <path d="M16 14h16v8h-2v-6h-12v6h-2z" fill="#f2d6b5"/>
+                        <path d="M20 18h2v2h-2z" fill="#222"/>
+                        <path d="M26 18h2v2h-2z" fill="#222"/>
+                        <path d="M19 16h4v2h-4z" fill="#fff"/>
+                        <path d="M25 16h4v2h-4z" fill="#fff"/>
+                        <path d="M12 22h24v20h-24z" fill="#a0522d"/>
+                        <path d="M14 22h-2v18h2z" fill="#8b5e3c"/>
+                        <path d="M34 22h2v18h-2z" fill="#8b5e3c"/>
+                        <path d="M12 40h24v2h-24z" fill="#8b5e3c"/>
+                        <path d="M32 24h4v4h-4z" fill="#f2d6b5"/>
+                        <path d="M18 22h12v2h-12z" fill="#fff"/>
+                        <path d="M16 24h16v2h-16z" fill="#fff"/>
+                        <path d="M16 26h16v2h-16z" fill="#fff"/>
+                        <path d="M18 28h12v2h-12z" fill="#fff"/>
+                        <path d="M18 30h12v2h-12z" fill="#fff"/>
+                        <path d="M20 32h8v2h-8z" fill="#fff"/>
+                        <path d="M20 34h8v2h-8z" fill="#fff"/>
+                        <path d="M22 36h4v2h-4z" fill="#fff"/>
+                    </svg>
+                </div>
+
+                <p class="mb-8 text-base md:text-lg leading-relaxed">
+                    よく来た、若き勇者よ！<br>
+                    これより君には、この国が抱える10の試練に挑んでもらう。<br>
+                    君の答えの中に、君が手を取り合うべきギルド（政党）の姿がきっと見えてくるじゃろう。<br>
+                    さあ、冒険の始まりじゃ！
+                </p>
+                <button id="start-button" class="btn-rpg text-xl md:text-2xl px-12 py-4 rounded-lg">冒険をはじめる</button>
+            </div>
+        </div>
+
+        <!-- 質問画面 -->
+        <div id="question-screen" class="hidden">
+            <div class="dialog-box p-6 md:p-8 rounded-lg">
+                <div class="mb-6">
+                    <p class="font-rpg text-lg mb-2" id="progress-label">試練 1 / 10</p>
+                    <div class="progress-bar-container w-full h-6 rounded-full">
+                        <div id="progress-bar" class="progress-bar h-full rounded-full" style="width: 10%;"></div>
+                    </div>
+                </div>
+
+                <h2 class="text-xl md:text-2xl font-bold mb-2" id="question-title"></h2>
+                <p class="text-base md:text-lg mb-6" id="question-text"></p>
+
+                <div id="options-container" class="space-y-3"></div>
+                
+                <div class="flex justify-between items-center mt-8">
+                    <button id="back-button" class="btn-rpg btn-rpg-secondary px-8 py-3 rounded-lg">戻る</button>
+                    <button id="explanation-button" class="text-blue-300 hover:text-blue-400 underline text-sm">
+                        ▶︎ 賢者ポリ丸の解説
+                    </button>
+                    <button id="next-button" class="btn-rpg px-8 py-3 rounded-lg" disabled>進む</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 結果画面 -->
+        <div id="result-screen" class="hidden">
+            <div class="dialog-box p-6 md:p-10 rounded-lg text-center">
+                <h2 class="text-3xl md:text-4xl font-rpg mb-6 text-yellow-300">運命のギルド</h2>
+                <p class="mb-8 text-base md:text-lg">試練、ご苦労じゃった！君の答えと、各ギルドの思想を照らし合わせた結果が出たぞ。</p>
+                <div id="result-container" class="space-y-6"></div>
+                <button id="restart-button" class="btn-rpg text-xl px-10 py-3 rounded-lg mt-10">もう一度診断する</button>
+                 <p class="text-xs text-gray-400 mt-6">
+                    【免責事項】このサイトは、政治や選挙に関心を持つきっかけ作りを目的としています。各政党の政策は簡略化しており、全てを網羅するものではありません。結果は投票先を強制するものではなく、あくまで参考情報です。最終的な判断は、ご自身で各政党の公約などをよくご確認の上、お願いいたします。
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 解説モーダル -->
+    <div id="explanation-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+        <div class="dialog-box max-w-2xl w-full p-6 md:p-8 rounded-lg relative">
+            <h3 class="text-xl md:text-2xl font-rpg mb-4 text-yellow-300">賢者の解説</h3>
+            <p id="explanation-text" class="text-base md:text-lg leading-relaxed"></p>
+            <button id="close-modal-button" class="btn-rpg px-6 py-2 rounded-lg mt-6">閉じる</button>
+        </div>
+    </div>
+
+    <script>
+        // --- データ定義 ---
+        const parties = [
+            { name: "自由民主ギルド", fullName: "自由民主党", score: 0, description: "国の安定と経済成長を重視する、最も大きなギルドじゃ。伝統を重んじつつ、現実的な政策で国を導こうとする。防衛力の強化や大企業主導の経済を「力」と考える傾向があるぞ。", positions: { q1: 4, q2: 1, q3: 2, q4: 1, q5: 4, q6: 2, q7: 2, q8: 4, q9: 1, q10: 2 } },
+            { name: "立憲民主ギルド", fullName: "立憲民主党", score: 0, description: "個人の権利や多様性を守る「リベラル」な魔法を得意とするギルド。格差の是正や分配を重視し、弱い立場の人々に寄り添う。平和外交を重んじ、原発に頼らない社会を目指しておる。", positions: { q1: 2, q2: 4, q3: 4, q4: 5, q5: 1, q6: 1, q7: 3, q8: 2, q9: 3, q10: 4 } },
+            { name: "公明ギルド", fullName: "公明党", score: 0, description: "「大衆とともに」を掲げ、福祉や教育など、人々の暮らしに根ざした政策を重視するギルドじゃ。平和主義を強く掲げており、自由民主ギルドと協力しつつも、独自のバランス感覚を持つ。", positions: { q1: 2, q2: 3, q3: 3, q4: 4, q5: 3, q6: 1, q7: 3, q8: 2, q9: 2, q10: 3 } },
+            { name: "維新ギルド", fullName: "日本維新の会", score: 0, description: "「改革」の旗を掲げ、身を切る改革や規制緩和を訴える、勢いのあるギルドじゃ。小さな政府を目指し、徹底した行財政改革を主張する。教育の無償化など、未来への投資にも積極的じゃ。", positions: { q1: 2, q2: 2, q3: 3, q4: 2, q5: 2, q6: 2, q7: 3, q8: 1, q9: 2, q10: 1 } },
+            { name: "国民民主ギルド", fullName: "国民民主党", score: 0, description: "「対決より解決」を掲げ、現実的な政策提案を重視するギルド。労働者の権利を守りつつ、経済成長も目指すバランス型。エネルギー政策や安全保障でも、独自の路線を模索しておる。", positions: { q1: 1, q2: 2, q3: 2, q4: 3, q5: 2, q6: 1, q7: 3, q8: 3, q9: 2, q10: 3 } },
+            { name: "共産ギルド", fullName: "日本共産党", score: 0, description: "大企業の利益よりも、個人の暮らしと平和を最優先する、歴史あるギルドじゃ。憲法9条を守り、日米安保条約の見直しを主張。消費税廃止など、大胆な分配政策を掲げておる。", positions: { q1: 1, q2: 5, q3: 5, q4: 5, q5: 1, q6: 1, q7: 4, q8: 1, q9: 5, q10: 5 } },
+            { name: "れいわギルド", fullName: "れいわ新選組", score: 0, description: "「失われた30年からの脱却」を掲げ、大胆な経済政策で人々を救おうとする新進気鋭のギルドじゃ。消費税廃止や積極的な財政出動を訴え、困難を抱える人々に徹底的に寄り添う姿勢が特徴じゃ。", positions: { q1: 1, q2: 5, q3: 5, q4: 5, q5: 1, q6: 1, q7: 4, q8: 2, q9: 4, q10: 5 } },
+            { name: "社民ギルド", fullName: "社会民主党", score: 0, description: "「護憲・平和・福祉」を理念とする、平和を愛するギルドじゃ。誰もが安心して暮らせる社会を目指し、格差是正や労働者の権利保護を強く訴える。一貫して平和主義を貫いておるぞ。", positions: { q1: 2, q2: 5, q3: 5, q4: 5, q5: 1, q6: 1, q7: 4, q8: 2, q9: 4, q10: 4 } },
+            { name: "参政ギルド", fullName: "参政党", score: 0, description: "食と健康、そして日本の国柄を守ることを第一に考えるギルドじゃ。目先の利益だけでなく、未来の世代に何を残すかを真剣に議論しておる。独自の視点から、国のあり方を問い直すぞ。", positions: { q1: 2, q2: 2, q3: 3, q4: 2, q5: 4, q6: 2, q7: 4, q8: 2, q9: 3, q10: 4 } },
+            { name: "N国ギルド", fullName: "NHK党", score: 0, description: "「NHKをぶっ壊す！」という一点突破の呪文を唱える、非常にユニークなギルドじゃ。既得権益と戦い、放送のあり方や税金の使われ方に鋭く切り込む。他の政策は、民意を直接問うなど、型破りな手法をとるぞ。", positions: { q1: 1, q2: 3, q3: 3, q4: 2, q5: 2, q6: 3, q7: 3, q8: 2, q9: 3, q10: 1 } },
+            { name: "日本保守ギルド", fullName: "日本保守党", score: 0, description: "「日本の国体、伝統、文化を守り、豊かで強い日本を」を掲げる、新しくも志の熱いギルドじゃ。減税による経済成長と、毅然とした外交・防衛を訴え、古き良き日本の誇りを取り戻そうとしておる。", positions: { q1: 1, q2: 1, q3: 2, q4: 1, q5: 5, q6: 2, q7: 5, q8: 3, q9: 1, q10: 2 } }
+        ];
+        const questions = [
+            { title: "【試練１】 物価高と経済の巻物", text: "日々の生活が苦しい…。物価高を乗り越えるため、一時的に消費税を減らすべきか？", explanation: "消費税は、国の社会保障（年金、医療、介護など）を支える大切なお金じゃ。税率を下げれば、日々の買い物は楽になるかもしれんが、国に入るお金が減り、将来の社会保障サービスが削られる可能性もある。逆に、税率を維持・増税すれば、社会保障は安定するが、家計への負担は重くなる。どちらを優先するかが問われておるのじゃ。", options: [ { text: "【全力で減税！】今すぐ減税して、暮らしを楽にするべきだ！", value: 1 }, { text: "【やや減税寄り】減税は必要だが、財源も考えるべきだ。", value: 2 }, { text: "【中立の立場】減税以外の方法も探るべきだ。", value: 3 }, { text: "【やや慎重派】今の社会保障を考えると、安易な減税は危険だ。", value: 4 }, { text: "【断固反対！】未来の世代のために、税率は維持・または上げるべきだ。", value: 5 } ] },
+            { title: "【試練２】 国防の盾", text: "近隣諸国の脅威に備え、国の防衛費をもっと増やすべきか？", explanation: "防衛費は、自衛隊の装備を新しくしたり、隊員の数を増やしたりするために使われるお金じゃ。増やすことで、他国からの攻撃を思いとどまらせる力（抑止力）が高まると考える人もいれば、軍事的な緊張を高め、平和的な対話の道を閉ざしてしまうと心配する人もおる。国の安全をどう守るか、根本的な考え方が試される試練じゃ。", options: [ { text: "【全力で増強！】国を守るため、防衛費は大幅に増やすべきだ！", value: 1 }, { text: "【やや増強寄り】今よりは増やす必要がある。", value: 2 }, { text: "【中立の立場】他の国との対話を重視し、現状を維持すべきだ。", value: 3 }, { text: "【やや慎重派】軍事費よりも、暮らしや教育にお金を使うべきだ。", value: 4 }, { text: "【断固反対！】軍備拡大は争いを招く。対話と平和外交が第一だ。", value: 5 } ] },
+            { title: "【試練３】 エネルギーの聖杯", text: "電力不足や環境問題を考えた時、原子力発電を今後どうすべきか？", explanation: "原子力発電は、少ない燃料でたくさんの電気を作れ、発電時に二酸化炭素を出さないという長所がある。しかし、一度事故が起きると甚大な被害をもたらす危険性や、核のゴミの処理方法が決まっていないという大きな課題も抱えておる。安定した電力供給と、未来の環境と安全。どちらを重んじるかの選択じゃな。", options: [ { text: "【積極的に活用！】安全性を確保した上で、重要なエネルギー源として活用すべきだ！", value: 1 }, { text: "【条件付きで容認】今ある原発は、再稼働もやむを得ない。", value: 2 }, { text: "【中立の立場】すぐにゼロにはできないが、徐々に減らしていくべきだ。", value: 3 }, { text: "【なるべく早く卒業】新しい原発は作らず、再生可能エネルギーに切り替えるべきだ。", value: 4 }, { text: "【今すぐゼロに！】危険な原発は、即刻すべて廃止すべきだ！", value: 5 } ] },
+            { title: "【試練４】 平和の憲法", text: "日本の平和を守ってきた憲法9条。今の時代に合わせて変えるべきか？", explanation: "憲法9条は、「戦争を放棄し、戦力を持たない」と定めておる、日本の平和主義の根幹じゃ。これを改正して、自衛隊の存在を正式に認め、国際社会での役割を広げるべきだという意見がある。一方で、改正すれば「戦争ができる国」になってしまうと、強い懸念を示す意見もある。国のあり方を決める、非常に重い試練じゃ。", options: [ { text: "【改正に大賛成！】現実の脅威に対応できるよう、自衛隊の役割を明確に記すべきだ！", value: 1 }, { text: "【改正に前向き】時代に合わせて、議論し、変える部分があっても良い。", value: 2 }, { text: "【中立の立場】議論は続けるべきだが、今すぐ変える必要はない。", value: 3 }, { text: "【改正に慎重】変えることで、戦争に巻き込まれるリスクが高まる。", value: 4 }, { text: "【断固護憲！】日本の平和の象徴だ。絶対に一文字も変えるべきではない！", value: 5 } ] },
+            { title: "【試練５】 多様な家族のかたち", text: "同性婚や、夫婦が別々の姓を名乗る「選択的夫婦別姓」を法律で認めるべきか？", explanation: "誰もが自分らしく生きられる社会を目指す上で、家族のあり方も多様化してきておる。同性カップルにも結婚の権利を認めるべきか、結婚後も夫婦がそれぞれの姓を選べるようにすべきか、という問いじゃ。個人の権利や自由をどこまで尊重するか、そして「家族」というものをどう捉えるかが問われておる。", options: [ { text: "【全力で賛成！】個人の自由と多様性を尊重し、すぐに認めるべきだ！", value: 1 }, { text: "【どちらかと言えば賛成】時代の変化に合わせて、認める方向で進めるべきだ。", value: 2 }, { text: "【中立の立場】社会の十分な理解を得ながら、慎重に議論すべきだ。", value: 3 }, { text: "【どちらかと言えば反対】伝統的な家族の形を大切にしたい。", value: 4 }, { text: "【断固反対！】日本の伝統や社会の秩序が乱れるので、認めるべきではない。", value: 5 } ] },
+            { title: "【試練６】 未来への投資", text: "少子化対策として、子育て支援（給付金や保育所の充実など）にもっとお金をかけるべきか？", explanation: "子どもの数が減り続ける「少子化」は、国の活力を失わせる大きな問題じゃ。子育て世帯へのお金の支援や、子どもを預けやすい環境づくりを進めることで、子どもを産み育てやすい社会を目指すべきだという考えがある。一方で、そのためには多くの税金が必要となり、他の政策（高齢者福祉や公共事業など）にしわ寄せがいく可能性も指摘されておるのじゃ。", options: [ { text: "【全力で投資！】国の未来のためだ。最優先で予算を大幅に増やすべき！", value: 1 }, { text: "【増額に賛成】今よりも手厚い支援が必要だ。", value: 2 }, { text: "【中立の立場】他の予算とのバランスを見ながら考えるべきだ。", value: 3 }, { text: "【増額に慎重】すでにある制度の活用や見直しが先だ。", value: 4 }, { text: "【現状維持で十分】これ以上、国のお金を使うべきではない。", value: 5 } ] },
+            { title: "【試練７】 外国との共存", text: "人口が減っていく日本。労働力などを補うため、外国人をもっと積極的に受け入れるべきか？", explanation: "働き手が減る中で、経済を維持するために外国人材の力が必要不可欠だという意見がある。また、多様な文化が交わることで社会が豊かになるという考え方もあるぞ。一方で、受け入れが進むと、日本人の仕事が奪われたり、文化の違いから社会的な摩擦が生まれたりするのではないかという懸念の声もある。未来の国の形をどう描くかの試練じゃ。", options: [ { text: "【積極的に受け入れ！】多様な文化を持つ人々と共に、社会を発展させるべきだ！", value: 1 }, { text: "【条件付きで賛成】必要な分野で、ルールを整備して進めるべきだ。", value: 2 }, { text: "【中立の立場】急激な変化は避け、現状を維持すべきだ。", value: 3 }, { text: "【慎重になるべき】まずは日本人の雇用を優先すべきだ。", value: 4 }, { text: "【反対！】治安の悪化や文化的な摩擦が心配なので、制限すべきだ。", value: 5 } ] },
+            { title: "【試練８】 大都市と地方のバランス", text: "人や富が東京などの大都市に集中している。地方を元気にするため、もっとお金や権限を地方に移すべきか？", explanation: "東京一極集中が進むと、地方は過疎化し、都市は過密化するという問題が起こる。これを是正するため、国の予算や仕事を地方に分け与え、それぞれの地域が特色ある政策を打てるようにすべきだという考えがある。しかし、日本の国際競争力を保つには、力のある大都市に投資を集中すべきだという反論もあるのじゃ。国全体の力の配分をどうするかの問題じゃな。", options: [ { text: "【全力で地方へ！】大胆に予算と権限を地方に移し、地方の自立を促すべき！", value: 1 }, { text: "【地方重視】今よりも地方への配分を増やすべきだ。", value: 2 }, { text: "【中立の立場】バランスが大事。今の配分を大きく変えるべきではない。", value: 3 }, { text: "【都市重視】日本の経済を引っ張る大都市の活力を削ぐべきではない。", value: 4 }, { text: "【競争こそ活力！】都市も地方も競争し、効率的な発展を目指すべき！", value: 5 } ] },
+            { title: "【試練９】 日本と大国の外交術", text: "世界のリーダーであるアメリカと、隣の大国である中国。今後、日本はどちらとの関係をより重視すべきか？", explanation: "アメリカは、日本の安全を守る「同盟国」として、非常に重要なパートナーじゃ。一方、中国は経済的に最も深いつながりを持つ「隣国」じゃが、軍事的な台頭など懸念材料もある。アメリカとの絆をさらに深めるのか、中国との経済関係も大切にするのか、あるいは両国の間で巧みに立ち回るのか。日本の外交手腕が問われる試練じゃ。", options: [ { text: "【断然アメリカ！】安全保障の要。同盟関係をさらに強化すべき！", value: 1 }, { text: "【アメリカ重視】アメリカとの同盟を基本としつつ、中国とも対話すべき。", value: 2 }, { text: "【バランス外交】両国と等しい距離を保ち、日本の利益を追求すべき。", value: 3 }, { text: "【中国も重視】経済的なつながりは不可欠。中国との関係も深めるべき。", value: 4 }, { text: "【アジア重視！】特定の大国に頼らず、アジア諸国との連携を第一にすべき！", value: 5 } ] },
+            { title: "【試練10】 自由と競争の市場", text: "経済を成長させるためには、国の規制を減らし、企業が自由に競争できる環境を作るべきか？", explanation: "「新自由主義」や「改革」とも呼ばれる考え方じゃ。企業が自由に活動できるように国のルール（規制）を減らせば、経済全体が活性化するという主張じゃ。一方で、そうした競争は、勝者と敗者を生み、貧富の差を広げてしまうという批判もある。成長と分配、どちらに重きを置くかで、国の経済の姿は大きく変わってくるのじゃ。", options: [ { text: "【競争こそ全て！】自由な競争こそが、新しいサービスや豊かさを生む！", value: 1 }, { text: "【規制緩和を進める】成長のため、不要な規制はなくしていくべきだ。", value: 2 }, { text: "【中立の立場】競争も大事だが、弱者を守るルールも必要だ。", value: 3 }, { text: "【ルールを重視】行き過ぎた競争は格差を広げる。国が適切に関わるべきだ。", value: 4 }, { text: "【分配こそ正義！】まずは富を正しく分け与える仕組みが最優先だ！", value: 5 } ] },
+        ];
+
+        // --- アプリケーションの状態 ---
+        let currentQuestionIndex = 0;
+        let userAnswers = {}; // オブジェクトに変更して回答を保存
+
+        // --- DOM要素 ---
+        const startScreen = document.getElementById('start-screen');
+        const questionScreen = document.getElementById('question-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const startButton = document.getElementById('start-button');
+        const restartButton = document.getElementById('restart-button');
+        const explanationModal = document.getElementById('explanation-modal');
+        const closeModalButton = document.getElementById('close-modal-button');
+        const backButton = document.getElementById('back-button');
+        const nextButton = document.getElementById('next-button');
+
+        // --- 関数 ---
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            startScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
+            questionScreen.classList.remove('hidden');
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('progress-label').textContent = `試練 ${currentQuestionIndex + 1} / ${questions.length}`;
+            document.getElementById('progress-bar').style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            document.getElementById('question-title').textContent = question.title;
+            document.getElementById('question-text').textContent = question.text;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('btn-rpg', 'w-full', 'text-left', 'p-4', 'rounded-lg', 'text-sm', 'md:text-base');
+                button.onclick = () => selectOption(option.value, button);
+                
+                // 以前の回答があれば選択状態を復元
+                if (userAnswers[currentQuestionIndex] === option.value) {
+                    button.classList.add('option-selected');
+                }
+                optionsContainer.appendChild(button);
+            });
+            
+            document.getElementById('explanation-button').onclick = () => showExplanation(question.explanation);
+
+            // ボタンの状態を更新
+            updateNavigationButtons();
+        }
+
+        function selectOption(value, selectedButton) {
+            // 他の選択肢のハイライトを解除
+            const optionButtons = document.querySelectorAll('#options-container button');
+            optionButtons.forEach(btn => btn.classList.remove('option-selected'));
+            
+            // 選択したボタンをハイライト
+            selectedButton.classList.add('option-selected');
+            
+            // 回答を保存
+            userAnswers[currentQuestionIndex] = value;
+            
+            // 進むボタンを有効化
+            nextButton.disabled = false;
+        }
+        
+        function updateNavigationButtons() {
+            // 戻るボタンの表示/非表示
+            backButton.style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
+            
+            // 進むボタンの有効/無効
+            nextButton.disabled = userAnswers[currentQuestionIndex] === undefined;
+        }
+
+        function goToNext() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function goToPrevious() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        }
+
+        function showExplanation(explanation) {
+            document.getElementById('explanation-text').textContent = explanation;
+            explanationModal.classList.remove('hidden');
+        }
+        
+        function closeExplanation() {
+            explanationModal.classList.add('hidden');
+        }
+
+        function showResults() {
+            questionScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            parties.forEach(party => {
+                let totalDifference = 0;
+                for (let i = 0; i < questions.length; i++) {
+                    const questionKey = `q${i + 1}`;
+                    const userAnswer = userAnswers[i];
+                    const partyPosition = party.positions[questionKey];
+                    // 未回答の質問は差を最大（4）として計算
+                    const difference = userAnswer !== undefined ? Math.abs(userAnswer - partyPosition) : 4;
+                    totalDifference += difference;
+                }
+                const maxDifference = 4 * questions.length;
+                const matchPercentage = Math.round((1 - (totalDifference / maxDifference)) * 100);
+                party.score = matchPercentage;
+            });
+
+            parties.sort((a, b) => b.score - a.score);
+
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.innerHTML = '';
+            parties.forEach(party => {
+                const resultCard = `
+                    <div class="result-card p-4 md:p-6 rounded-lg text-left transform hover:scale-105 transition-transform duration-300">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-start">
+                            <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6 text-center">
+                                <p class="font-rpg text-sm text-gray-300">マッチング率</p>
+                                <p class="font-rpg text-5xl text-yellow-300">${party.score}<span class="text-2xl">%</span></p>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-rpg mb-2">${party.name}</h3>
+                                <p class="text-sm font-bold mb-2 text-gray-400">（${party.fullName}）</p>
+                                <p class="text-base leading-relaxed">${party.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultContainer.innerHTML += resultCard;
+            });
+        }
+        
+        function restartQuiz() {
+            resultScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+        }
+
+        // --- イベントリスナー ---
+        startButton.addEventListener('click', startQuiz);
+        restartButton.addEventListener('click', restartQuiz);
+        closeModalButton.addEventListener('click', closeExplanation);
+        explanationModal.addEventListener('click', (e) => {
+            if (e.target === explanationModal) {
+                closeExplanation();
+            }
+        });
+        nextButton.addEventListener('click', goToNext);
+        backButton.addEventListener('click', goToPrevious);
+
+    </script>
+</body>
+</html>
