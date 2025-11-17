@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大宮の賃貸なら埼京リアルエステート | 創業30年の地元密着型不動産</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700;900&family=Outfit:wght@400;500;700;800&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #1A4D2E;
+            --sage: #4F6F52;
+            --warm-sand: #E8DCC4;
+            --terracotta: #C85C3C;
+            --cream: #FAF7F0;
+            --charcoal: #2C3333;
+            --soft-gray: #7C8887;
+            --highlight: #D4A574;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ヘッダー */
+        header {
+            background: rgba(250, 247, 240, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--warm-sand);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-text {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--forest);
+            letter-spacing: 1px;
+        }
+
+        .logo-sub {
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            color: var(--sage);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .phone-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--terracotta);
+            letter-spacing: 1px;
+        }
+
+        .business-hours {
+            font-size: 13px;
+            color: var(--soft-gray);
+            line-height: 1.5;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            min-height: 85vh;
+            background: 
+                linear-gradient(135deg, rgba(26, 77, 46, 0.85) 0%, rgba(79, 111, 82, 0.75) 100%),
+                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--cream), transparent);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 70px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 165, 116, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid var(--highlight);
+            padding: 12px 28px;
+            border-radius: 50px;
+            color: var(--warm-sand);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(44px, 6vw, 82px);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 28px;
+            animation: fadeIn 1s ease-out 0.2s backwards;
+        }
+
+        .hero-subtitle {
+            font-family: 'Shippori Mincho', serif;
+            font-size: clamp(18px, 2.2vw, 26px);
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 720px;
+            margin-bottom: 48px;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out 0.4s backwards;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .hero-feature-icon {
+            font-size: 24px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--terracotta) 0%, #D67456 100%);
+            color: #fff;
+            padding: 20px 48px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(200, 92, 60, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(200, 92, 60, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 20px 48px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* 強みセクション */
+        .strengths-section {
+            padding: 120px 40px;
+            background: #fff;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(32px, 4.5vw, 52px);
+            font-weight: 900;
+            color: var(--forest);
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 18px;
+            color: var(--soft-gray);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+
+        .strength-card {
+            background: linear-gradient(135deg, #FAFAF8 0%, #F5F5F3 100%);
+            padding: 48px 40px;
+            border-radius: 20px;
+            border-top: 4px solid var(--sage);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strength-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(79, 111, 82, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .strength-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-top-color: var(--terracotta);
+        }
+
+        .strength-icon {
+            font-size: 52px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .strength-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 16px;
+        }
+
+        .strength-description {
+            color: var(--soft-gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .strength-highlight {
+            background: rgba(200, 92, 60, 0.08);
+            padding: 16px 20px;
+            border-left: 3px solid var(--terracotta);
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+
+        /* 物件検索セクション */
+        .search-section {
+            background: 
+                linear-gradient(135deg, rgba(26, 77, 46, 0.95) 0%, rgba(79, 111, 82, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80') center/cover fixed;
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        .search-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.02) 80px, rgba(255,255,255,0.02) 160px);
+        }
+
+        .search-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-section h2 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .search-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .search-tab {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 14px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-tab:hover,
+        .search-tab.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: var(--highlight);
+            color: #fff;
+        }
+
+        .search-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--forest);
+        }
+
+        .form-input,
+        .form-select {
+            padding: 16px;
+            border: 2px solid #E8E8E6;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(79, 111, 82, 0.1);
+        }
+
+        .search-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--terracotta) 0%, #D67456 100%);
+            color: #fff;
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(200, 92, 60, 0.3);
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(200, 92, 60, 0.4);
+        }
+
+        /* 選ばれる理由セクション */
+        .reasons-section {
+            padding: 120px 40px;
+            background: var(--warm-sand);
+        }
+
+        .reasons-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .reasons-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .reasons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .reason-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .reason-number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--terracotta) 0%, #D67456 100%);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .reason-content h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 8px;
+        }
+
+        .reason-content p {
+            color: var(--soft-gray);
+            line-height: 1.8;
+        }
+
+        /* お客様の声セクション */
+        .testimonials-section {
+            padding: 120px 40px;
+            background: #fff;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #FAFAF8 0%, #F5F5F3 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 4px solid var(--sage);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-left-color: var(--terracotta);
+        }
+
+        .quote-mark {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 72px;
+            color: var(--warm-sand);
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 16px;
+            color: var(--charcoal);
+            line-height: 1.9;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--forest) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 4px;
+        }
+
+        .author-detail {
+            font-size: 13px;
+            color: var(--soft-gray);
+        }
+
+        /* エリア情報セクション */
+        .area-section {
+            padding: 120px 40px;
+            background: var(--cream);
+        }
+
+        .area-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .area-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .area-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--sage);
+        }
+
+        .area-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .area-content {
+            padding: 24px;
+        }
+
+        .area-name {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 8px;
+        }
+
+        .area-properties {
+            font-size: 14px;
+            color: var(--terracotta);
+            font-weight: 600;
+        }
+
+        /* CTAセクション */
+        .final-cta {
+            background: 
+                linear-gradient(135deg, rgba(26, 77, 46, 0.95) 0%, rgba(79, 111, 82, 0.92) 100%),
+                url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80') center/cover;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(32px, 4.5vw, 52px);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .cta-content p {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-info {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .cta-info-item {
+            text-align: center;
+        }
+
+        .cta-info-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .cta-info-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--highlight);
+        }
+
+        /* フッター */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-about {
+            padding-right: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .footer-license {
+            font-size: 13px;
+            color: var(--soft-gray);
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h4 {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--terracotta);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 1024px) {
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-contact {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-end;
+            }
+
+            .phone-number {
+                font-size: 24px;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .search-form {
+                padding: 32px 24px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-about {
+                padding-right: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div>
+                    <div class="logo-text">埼京リアルエステート</div>
+                    <div class="logo-sub">Since 1995 • Omiya</div>
+                </div>
+            </div>
+            <div class="header-contact">
+                <div>
+                    <div class="phone-number">048-XXX-XXXX</div>
+                    <div class="business-hours">営業時間 9:00-18:00<br>定休日 水曜日</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🏠</span>
+                <span>創業30年 地元密着</span>
+            </div>
+            <h1>大宮の「住みたい」と<br>「貸したい」を、誠実に。</h1>
+            <p class="hero-subtitle">
+                SUUMOやHOME'Sに載る前の「先行情報」。地元の大家さんとの繋がりで見つかる「未公開物件」。創業30年、大宮駅西口徒歩12分の街の不動産屋が、あなたの暮らしを丁寧にサポートします。
+            </p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">🔑</span>
+                    <span>未公開物件多数</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">👥</span>
+                    <span>地元ネットワーク</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">🏘️</span>
+                    <span>管理物件300戸</span>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#search" class="btn-primary">物件を探す</a>
+                <a href="tel:048-XXX-XXXX" class="btn-secondary">電話で相談する</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 強みセクション -->
+    <section class="strengths-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Strengths</div>
+                <h2 class="section-title">埼京リアルエステートが<br>選ばれる3つの理由</h2>
+                <p class="section-subtitle">
+                    大手ポータルサイトでは見つからない、地元だからこそできる価値を提供します。
+                </p>
+            </div>
+
+            <div class="strengths-grid">
+                <div class="strength-card">
+                    <span class="strength-icon">🤝</span>
+                    <h3 class="strength-title">地元のネットワーク</h3>
+                    <p class="strength-description">
+                        社長の高橋が地元出身で、古くからの大家さんとの繋がりが非常に強いのが私たちの最大の武器。「高橋さんのところじゃないと、ウチのアパートは任せない」という固定客を抱えています。
+                    </p>
+                    <div class="strength-highlight">
+                        創業30年で培った地元大家さんとの信頼関係。これが他社にはない強みです。
+                    </div>
+                </div>
+
+                <div class="strength-card">
+                    <span class="strength-icon">🔍</span>
+                    <h3 class="strength-title">未公開物件</h3>
+                    <p class="strength-description">
+                        SUUMOやHOME'Sに載せる前の「先行情報」や、大家の意向で「ネット掲載不可」となっている優良物件を水面下で保有。一般公開前に、お客様だけにご紹介できます。
+                    </p>
+                    <div class="strength-highlight">
+                        ポータルサイトに出る前に、良い物件から埋まっていく。それが不動産業界の現実です。
+                    </div>
+                </div>
+
+                <div class="strength-card">
+                    <span class="strength-icon">❤️</span>
+                    <h3 class="strength-title">誠実な対応</h3>
+                    <p class="strength-description">
+                        従業員8名の小さな不動産屋だからこそ、お客様一人ひとりに丁寧に向き合えます。営業主任の斉藤をはじめ、「顧客からの信頼」を何よりも大切にしています。
+                    </p>
+                    <div class="strength-highlight">
+                        「対面と人情がウリ」。デジタルでは伝わらない温かさを大切にしています。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 物件検索セクション -->
+    <section class="search-section" id="search">
+        <div class="search-container">
+            <h2>あなたにぴったりの物件を探す</h2>
+            
+            <div class="search-tabs">
+                <button class="search-tab active">賃貸を借りたい</button>
+                <button class="search-tab">賃貸を貸したい</button>
+                <button class="search-tab">売買</button>
+            </div>
+
+            <div class="search-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">エリア</label>
+                        <select class="form-select">
+                            <option>大宮駅周辺</option>
+                            <option>大宮公園周辺</option>
+                            <option>北大宮駅周辺</option>
+                            <option>さいたま新都心</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">間取り</label>
+                        <select class="form-select">
+                            <option>指定なし</option>
+                            <option>ワンルーム・1K</option>
+                            <option>1DK・1LDK</option>
+                            <option>2K・2DK・2LDK</option>
+                            <option>3K・3DK・3LDK以上</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">家賃</label>
+                        <select class="form-select">
+                            <option>指定なし</option>
+                            <option>〜5万円</option>
+                            <option>5万円〜7万円</option>
+                            <option>7万円〜10万円</option>
+                            <option>10万円〜</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">こだわり条件</label>
+                        <select class="form-select">
+                            <option>指定なし</option>
+                            <option>駅徒歩10分以内</option>
+                            <option>ペット可</option>
+                            <option>バス・トイレ別</option>
+                            <option>2階以上</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="search-button">物件を検索する</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 選ばれる理由セクション -->
+    <section class="reasons-section">
+        <div class="reasons-content">
+            <div class="section-header">
+                <div class="section-label">Why Choose Us</div>
+                <h2 class="section-title">大宮で30年、<br>地域に根ざした不動産会社</h2>
+            </div>
+
+            <div class="reasons-grid">
+                <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&q=80" alt="大宮の街並み" class="reasons-image">
+                
+                <div class="reasons-list">
+                    <div class="reason-item">
+                        <div class="reason-number">01</div>
+                        <div class="reason-content">
+                            <h3>1995年創業の老舗</h3>
+                            <p>埼玉県知事免許を8回更新している実績。30年の信頼と経験で、大宮エリアを知り尽くしています。</p>
+                        </div>
+                    </div>
+
+                    <div class="reason-item">
+                        <div class="reason-number">02</div>
+                        <div class="reason-content">
+                            <h3>管理物件300戸</h3>
+                            <p>地元の地主様から預かっている管理物件は約300戸。賃貸管理のノウハウと、オーナー様との信頼関係があります。</p>
+                        </div>
+                    </div>
+
+                    <div class="reason-item">
+                        <div class="reason-number">03</div>
+                        <div class="reason-content">
+                            <h3>大宮駅西口徒歩12分</h3>
+                            <p>地元密着だからこそできる、きめ細やかなサポート。ご来店からアフターフォローまで、誠実に対応いたします。</p>
+                        </div>
+                    </div>
+
+                    <div class="reason-item">
+                        <div class="reason-number">04</div>
+                        <div class="reason-content">
+                            <h3>顔が見える安心感</h3>
+                            <p>社長、専務、営業主任の斉藤など、スタッフの顔が見える不動産屋。「誰に相談すればいいか分からない」ということがありません。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声セクション -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">お客様の声</h2>
+                <p class="section-subtitle">
+                    埼京リアルエステートで物件を見つけた方々の声をご紹介します。
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-mark">''</div>
+                    <p class="testimonial-text">
+                        SUUMOで探していたけど、なかなか良い物件が見つからず。埼京リアルエステートさんに相談したら、ネットに出ていない物件を紹介してくれました。大宮駅徒歩8分で、予算内のファミリー向け物件。感謝しています！
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">田</div>
+                        <div class="author-info">
+                            <div class="author-name">田中 様</div>
+                            <div class="author-detail">30代 / ご家族3人</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-mark">''</div>
+                    <p class="testimonial-text">
+                        初めての一人暮らしで不安でしたが、斉藤さんが丁寧に説明してくれて安心しました。契約後も、困ったことがあればすぐに対応してくれて、本当に助かっています。地元の不動産屋さんならではの温かさを感じました。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">佐</div>
+                        <div class="author-info">
+                            <div class="author-name">佐藤 様</div>
+                            <div class="author-detail">20代 / 単身</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-mark">''</div>
+                    <p class="testimonial-text">
+                        アパートの管理を埼京リアルエステートさんにお願いして10年以上。高橋社長とは長い付き合いで、信頼して任せています。入居者対応も丁寧で、空室が出てもすぐに埋まる。本当にありがたい存在です。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">山</div>
+                        <div class="author-info">
+                            <div class="author-name">山本 様</div>
+                            <div class="author-detail">オーナー様</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- エリア情報セクション -->
+    <section class="area-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Areas</div>
+                <h2 class="section-title">対応エリア</h2>
+                <p class="section-subtitle">
+                    大宮を中心に、さいたま市内の物件を幅広く取り扱っています。
+                </p>
+            </div>
+
+            <div class="area-grid">
+                <div class="area-card">
+                    <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=600&q=80" alt="大宮駅周辺" class="area-image">
+                    <div class="area-content">
+                        <div class="area-name">大宮駅周辺</div>
+                        <div class="area-properties">取扱物件 120件</div>
+                    </div>
+                </div>
+
+                <div class="area-card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="大宮公園周辺" class="area-image">
+                    <div class="area-content">
+                        <div class="area-name">大宮公園周辺</div>
+                        <div class="area-properties">取扱物件 85件</div>
+                    </div>
+                </div>
+
+                <div class="area-card">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="北大宮駅周辺" class="area-image">
+                    <div class="area-content">
+                        <div class="area-name">北大宮駅周辺</div>
+                        <div class="area-properties">取扱物件 65件</div>
+                    </div>
+                </div>
+
+                <div class="area-card">
+                    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80" alt="さいたま新都心" class="area-image">
+                    <div class="area-content">
+                        <div class="area-name">さいたま新都心</div>
+                        <div class="area-properties">取扱物件 45件</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ファイナルCTA -->
+    <section class="final-cta">
+        <div class="cta-content">
+            <h2>まずはお気軽に<br>ご相談ください</h2>
+            <p>
+                物件探しのこと、お部屋のこと、契約のこと。<br>
+                どんな小さなことでも、誠実にお答えします。
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="tel:048-XXX-XXXX" class="btn-primary">048-XXX-XXXX</a>
+                <a href="#search" class="btn-secondary">物件を探す</a>
+            </div>
+
+            <div class="cta-info">
+                <div class="cta-info-item">
+                    <div class="cta-info-label">営業時間</div>
+                    <div class="cta-info-value">9:00 - 18:00</div>
+                </div>
+                <div class="cta-info-item">
+                    <div class="cta-info-label">定休日</div>
+                    <div class="cta-info-value">水曜日</div>
+                </div>
+                <div class="cta-info-item">
+                    <div class="cta-info-label">所在地</div>
+                    <div class="cta-info-value">大宮駅西口 徒歩12分</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">埼京リアルエステート</div>
+                <p class="footer-description">
+                    1995年創業、大宮の街で30年。地元の大家さんとの信頼関係を武器に、SUUMOやHOME'Sに載らない未公開物件もご紹介。誠実な対応で、あなたの新生活をサポートします。
+                </p>
+                <div class="footer-license">
+                    埼玉県知事 (8) 第XXXXX号
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>物件を探す</h4>
+                <ul class="footer-links">
+                    <li><a href="#">賃貸物件一覧</a></li>
+                    <li><a href="#">売買物件一覧</a></li>
+                    <li><a href="#">エリアから探す</a></li>
+                    <li><a href="#">こだわり条件</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>サービス</h4>
+                <ul class="footer-links">
+                    <li><a href="#">賃貸仲介</a></li>
+                    <li><a href="#">賃貸管理</a></li>
+                    <li><a href="#">売買仲介</a></li>
+                    <li><a href="#">オーナー様へ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>会社情報</h4>
+                <ul class="footer-links">
+                    <li><a href="#">会社概要</a></li>
+                    <li><a href="#">アクセス</a></li>
+                    <li><a href="#">スタッフ紹介</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 株式会社 埼京リアルエステート. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
